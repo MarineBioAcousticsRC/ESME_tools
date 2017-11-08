@@ -77,7 +77,7 @@ save(matOut, 'thisAngle', 'rr', 'nrr', 'botDepthSort', 'sd', 'sortedTLVec', 'IX'
 
 % 
 % plot vertical profile
-profNum  = 4;
+profNum  =1;
 thisProf = sortedTLVec{profNum};
 thisBot = botDepth_interp(profNum,:);
 botCutoff = [];
@@ -91,7 +91,6 @@ end
 figure(11);clf
 % [cmap, lims, ticks, bfncol, ctable] = cptcmap('GMT_wysiwygcont.cpt', gca, 'mapping', 'scaled', 'ncol', 256);
 % colormap(flipud(cmap));
-imagesc(real(thisProf))
-
-
+imagesc(rr,rd,real(thisProf))
+colorbar
 1;
