@@ -12,6 +12,27 @@ These files essentially match those used by Mike Porter's ACT, and can be tweake
 
 
 Output: 
+
+- Text files matching the format required for input into Bellhop or Ramgeo. These are created by ESME and re-named/modified (if desired) by batch_tl.
+
+- A .mat file containing the following:
+
+rr: a vector of range reciever distances from the source.
+
+thisAngle: Tells you the angle of each radial from the sensor.
+
+botDepthSort: A matrix where each row contains the bottom depth along a radial (direction given by 'thisAngle', range given by rr).
+
+nrr: number of range recievers
+
+rd_all: cell array of reciever depths in meters. Vectors within cells can be longer for radials that contain deeper bathymetry.
+
+sd: source depth in meters.
+
+sortedTLVec: Cell array containing vertical transmission loss profiles for each radial.
+
+
+
 Instructions:
 
 Copy the scenario file of interest to a different folder. 
@@ -31,3 +52,7 @@ You can also modify the sediment composition if it's empty (this happens occasio
 batch_tl('E:\Data\0ycwwb20\',[2000:1000:10000],'bellhop', '1336.5633 1470 146.7 1.145 0.00148 0')
 (Currently only implemented for bellhop. Let me know if you need it for other cases.)
 
+
+
+Known issues: 
+There seems to be a bug in the RAMgeo step size tool. If you change the default vertical or horizontal steps size, the transmission loss profile size becomes unpredictable.
