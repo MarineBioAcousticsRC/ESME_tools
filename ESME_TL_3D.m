@@ -40,7 +40,7 @@ for itr = 1:length(listing)
         % turn TL into dB       
         TLmat = -20*log10(tlt);
         botDepth = BathData(2,:);
-        botDepth_interp(j,:) = interp1(1:(nrr/length(botDepth)):nrr,botDepth,1:1:nrr,'spline');
+        botDepth_interp(j,:) = interp1(BathData(1,:),botDepth,rr,'spline');
 
         for i1 = 1:length(botDepth_interp(j,:))
             [~,botCutoff(i1,1)] = min(abs(botDepth_interp(j,i1) - rd));
