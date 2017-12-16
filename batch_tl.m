@@ -15,7 +15,7 @@ function batch_tl(indir, freq, TLmethod,varargin)
 %   TLmethod = Transmission loss method. Use "bellhop" for high frequency,
 %           "ramgeo" for low frequency. Case insensitive.
 % Example usage:
-%   batch_tl('E:\ESME_output\SOCAL_Jan\kjxmmm23\',[2000:1000:10000],1,210)
+%   batch_tl('E:\ESME_output\SOCAL_Jan\kjxmmm23\',[2000:1000:10000],'ramgeo')
 %
 %   This will take all the radial files in the input directory, and create
 %   directories in "E:\ESME_output\SOCAL_Jan\kjxmmm23\" for each frequency
@@ -52,7 +52,7 @@ for itr = 1:length(freq)
 
     
     % Extract transmission loss from bellhop outputs
-    matOut = ESME_TL_3D(fullfile(indir,outdir));
+    matOut = ESME_TL_3D(fullfile(indir,outdir), TLmethod);
     savePath = [indir, '\', 'freq_TL.mat'];
     save(savePath,'-mat')
     

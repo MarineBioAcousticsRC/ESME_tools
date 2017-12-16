@@ -1,4 +1,4 @@
-function [ title, freq, nsd, nrd, nrr, sd, rd, rr, tlt, FileStatus, EOF ] = ReadShadeBin( filename )
+function [ title, freq, nsd, nrd, nrr, sd, rd, rr, tlt, FileStatus, EOF ] = ReadShadeBin(filename, TLmethod)
 % READSHADEBIN
 % Reads in TL surfaces from a binary Bellhop/Kraken .SHD file 
 % without having to convert to ASCII first.
@@ -56,7 +56,8 @@ EOF        = FALSE;
 
 try
     % read header
-    [title, freq, nsd, nrd, nrr, sd, rd, rr, fid, startposn, reclf, recl, nextrec] = ReadShadeHeadBin( filename, 'OPEN' );
+    [title, freq, nsd, nrd, nrr, sd, rd, rr, fid, startposn,...
+        reclf, recl, nextrec] = ReadShadeHeadBin( filename, 'OPEN', TLmethod);
     % remove trailing spaces
     title = deblank(title);
 

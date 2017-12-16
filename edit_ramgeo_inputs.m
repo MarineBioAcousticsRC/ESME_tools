@@ -123,11 +123,13 @@ for itr2 = 1:length(envIdx)
     btyOutFile = [newOutFile, '.bty'];
     axsInFile = [fileInName, '.axs'];
     axsOutFile = [newOutFile, '.axs'];
+    
     fid_in_bty = fopen(btyInFile);
     fid_out_bty = fopen(btyOutFile, 'w+');
     fid_in_axs = fopen(axsInFile);
     fid_out_axs = fopen(axsOutFile, 'w+');
-
+    
+    
     while ~feof(fid_in_bty)
         s = fgets(fid_in_bty);
         fprintf(fid_out_bty,'%s',s);

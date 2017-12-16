@@ -1,4 +1,4 @@
-function sortedTLVec = ESME_TL_3D(indir) 
+function sortedTLVec = ESME_TL_3D(indir,TLmethod) 
 
 % indir = directory holding .shd files and .bty files
 
@@ -29,8 +29,8 @@ for itr = 1:length(listing)
         
         % Read in data
         BathData = ReadBathymetryFile(btyFile);
-        [~, freq, nsd, nrd, nrr, sd, rd, rr, tlt, ~,~] = ReadShadeBin( fileName );
         
+        [~, freq, nsd, nrd, nrr, sd, rd, rr, tlt, ~,~] = ReadShadeBin(fileName, TLmethod);
 %         if nrr>2000
 %             nrr = 1000;
 %             rr = rr(1:nrr);

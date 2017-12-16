@@ -1,4 +1,4 @@
-function [title, freq, nsd, nrd, nrr, sd, rd, rr, fid, startposn, reclf, recl, nextrec] = ReadShadeHeadBin( file, mode )
+function [title, freq, nsd, nrd, nrr, sd, rd, rr, fid, startposn, reclf, recl, nextrec] = ReadShadeHeadBin( file, mode, TLmethod)
 % ReadShadeHeadBin       Reads only header information from binary Shade File (not TL)
 %
 %USAGE:  [title, freq, nsd, nrd, nrr, sd, rd, rr, fid, startpoz, reclf, recl, nextrec] = ReadShadeHeadBin( file );
@@ -74,7 +74,10 @@ try
 
     fseek(fid, 2*recl+startposn, -1); %reposition to end of second record
     freq = fread( fid, 1, 'float32'); 
-    nsd  = fread( fid, 1, 'int32');
+    nsd  = fread( fid, 1, 'int32');     
+    if strcmpi(TLmethod, 'Bellhop')
+        fread( fid, 1, 'int32');  % extra for bellhop
+    end
     nrd  = fread( fid, 1, 'int32');
     nrr  = fread( fid, 1, 'int32');
     
@@ -97,7 +100,11 @@ try
        
     else
        % read source depths sd
-       nextrec = 3                             ;
+       if strcmpi(TLmethod, 'Bellhop')
+           nextrec = 4;% 
+       else
+           nextrec = 3; 
+       end
        fseek(fid, nextrec*recl+startposn, -1)  ; %reposition to end of third record
        sd      = fread( fid, nsd, 'float32')   ;
        % read receiver depths rd
