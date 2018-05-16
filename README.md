@@ -36,14 +36,21 @@ sortedTLVec: Cell array containing vertical transmission loss profiles for each 
 Instructions:
 
 Copy the scenario file of interest to a different folder. 
+
 eg. E:\Data\0ycwwb20  
 
-Then run something like:
-batch_tl('E:\Data\0ycwwb20\',2000,'bellhop')
-or multiple frequencies
-batch_tl('E:\Data\0ycwwb20\',[2000:1000:10000],'bellhop')
-or ramgeo
-batch_tl('E:\Data\0ycwwb20\',[20:10:100],'ramgeo')
+Then run something like:  
+
+batch_tl('E:\Data\0ycwwb20\',2000,'bellhop')  
+
+or multiple frequencies  
+
+batch_tl('E:\Data\0ycwwb20\',[2000:1000:10000],'bellhop')  
+
+or ramgeo  
+
+batch_tl('E:\Data\0ycwwb20\',[20:10:100],'ramgeo')  
+
 
 The second argument is the new frequency you want to run in Hz. See comments within the script.
 
